@@ -25,8 +25,10 @@ jobs:
 
       - name: Patch OpenNext to externalize pg-cloudflare
         run: |
-          FILE=$(find node_modules -path "*/@opennextjs/cloudflare/dist/cli/build/bundle-server.js")
-          sed -i "s|external: \["./middleware/handler.mjs"\]|external: ["./middleware/handler.mjs", "pg-cloudflare"]|" "$FILE"
+          FILE=$(find node_modules -path '*/@opennextjs/cloudflare/dist/cli/build/bundle-server.js' | head -1)
+          echo "Patching: $FILE"
+          sed -i 's|external: \["./middleware/handler.mjs"\]|external: ["./middleware/handler.mjs", "pg-cloudflare"]|' "$FILE"
+          head -80 "$FILE" | tail -10
 
       - name: Build with OpenNext Cloudflare
         run: npx opennextjs-cloudflare build
