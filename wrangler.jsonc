@@ -34,5 +34,10 @@
 		// Enable image optimization
 		// see https://opennext.js.org/cloudflare/howtos/image
 		"binding": "IMAGES"
+	},
+	"alias": {
+		// pg-cloudflare is conditionally required by pg for Cloudflare Worker runtime
+		// see https://github.com/brianc/node-postgres/blob/master/packages/pg/lib/stream.js
+		"pg-cloudflare": "./node_modules/pg-cloudflare/dist/index.js"
 	}
 }
