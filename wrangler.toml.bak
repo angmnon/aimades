@@ -1,0 +1,13 @@
+name = "aimades-worker"
+main = ".open-next/worker.js"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".open-next"
+
+[env.production]
+name = "aimades-worker"
+
+[[d1_databases]]
+binding = "DB"
+database_id = "YOUR_D1_DATABASE_ID"
+database_name = "aimades-db"
